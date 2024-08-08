@@ -2,4 +2,3 @@ include:
   - project: 'plataform/pipelines/bundle'
     ref: master
     file: '.gitlab-ci.yml'
-
