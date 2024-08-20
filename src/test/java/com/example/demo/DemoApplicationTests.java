@@ -26,3 +26,5 @@
 //		assertThat(body).isEqualTo("Spring is here!");
 //	}
 //}
+
+//./mvnw -Pprod clean verify sonar:sonar -Dsonar.host.url=http://92.112.178.142:9000 -Dsonar.login=admin -Dsonar.password=Adm@290404
