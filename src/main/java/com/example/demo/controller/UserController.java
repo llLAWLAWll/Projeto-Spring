@@ -2,12 +2,16 @@ package com.example.demo.controller;
 
 import com.example.demo.exception.BadRequestException;
 import com.example.demo.pojo.User;
+import com.example.demo.provider.viacep.BuscarCep;
+import com.example.demo.provider.viacep.model.Endereco;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
 @RestController
 @RequestMapping("user")
+@RequiredArgsConstructor
 public class UserController {
 
     @GetMapping()
