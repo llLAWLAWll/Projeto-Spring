@@ -6,6 +6,7 @@ import lombok.*;
 @Getter
 @Builder
 @AllArgsConstructor
+@NoArgsConstructor
 @EqualsAndHashCode
 @ToString
 public class Endereco {
@@ -15,5 +16,5 @@ public class Endereco {
     private String logradouro;
     private String uf;
     @JsonProperty("bairro")
-    private String neiberhoor;
+    private String neighborhood;
 }

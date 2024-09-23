@@ -19,6 +19,12 @@ public class ControllerException extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>( responseError, HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(NotFoundExeption.class)
+    public ResponseEntity<ResponseException> notFoundError(NotFoundExeption ex){
+        ResponseException responseError = new ResponseException(LocalDateTime.now(), ex.getDetail(), ex.getMessage(), null);
+        return new ResponseEntity<>( responseError, HttpStatus.NOT_FOUND);
+    }
+
     @ExceptionHandler(UprocessEntityException.class)
     public ResponseEntity<ResponseException> unprocessError(UprocessEntityException ex){
             ResponseException responseError = new ResponseException(LocalDateTime.now(), null, ex.getMessage(), "sasd");
