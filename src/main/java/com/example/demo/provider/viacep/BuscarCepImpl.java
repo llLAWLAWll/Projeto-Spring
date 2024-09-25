@@ -26,8 +26,8 @@ public class BuscarCepImpl implements BuscarCep{
                throw new BadRequestException("asdas", "asdasd");
 
            return response.getBody();
-        } catch (URISyntaxException e) {
-            throw new RuntimeException(e);
+        } catch (Exception e) {
+            throw new BadRequestException(e.getMessage(),null);
         }
 
 //        return null;

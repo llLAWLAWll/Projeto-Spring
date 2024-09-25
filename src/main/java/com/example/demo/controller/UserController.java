@@ -6,6 +6,7 @@ import com.example.demo.exception.NotFoundExeption;
 import com.example.demo.pojo.User;
 import com.example.demo.provider.viacep.BuscarCep;
 import com.example.demo.provider.viacep.model.Endereco;
+import com.example.demo.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,29 +19,18 @@ import java.util.Date;
 @RequiredArgsConstructor
 public class UserController {
 
+    private final UserService userService;
+
     private final BuscarCep buscarCep;
 
     @GetMapping()
-    public ResponseEntity<User> getUser(){
-
-        User user = new User("a", "B", new Date());
-
-        if (null == user){
-            throw new NotFoundExeption("notFound", "Usuário não encontrado!");
-        }
-
-        return ResponseEntity.ok(user);
-
+    public ResponseEntity<String> getUser(@RequestBody User client){
+        throw new BadRequestException("badRequest", "erro na chamada do getUser");
     }
 
     @PostMapping
-    public ResponseEntity<Void> postUser(@RequestBody User client){
-
-        if (null == client.getNome() || null == client.getCpf()) {
-            throw new BadRequestException("badRequest", "Nome ou CPF Invalido");
-        }
-
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<User> postUser(@RequestBody User client){
+        return ResponseEntity.ok(userService.createUser(client));
     }
 
     @DeleteMapping("/{cpf}")
